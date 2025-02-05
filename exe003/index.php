@@ -41,7 +41,29 @@
 
         //print "Estamos no ano de: " . date('Y.');
 
+        // $nom = "Rodrigo";
+        // $snom = "Nogueira"; //Apelido Minotauro
+
+        // print "$nom \"Minotauro\" $snom";
+
+        // $idade = 56;
+        // $ano = date('Y');
+        // print <<< 'NIVER'
+        //     É pessoal.
+        //         Estou ficando velho.
+        //             Faço $idade anos.
+        //                 Neste ano de $ano.
+        //                     Tô velhinho.
+        // NIVER;
+
         
+
+
+
+
+
+
+
 
 
     ?>
