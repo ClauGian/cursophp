@@ -8,39 +8,52 @@
 </head>
 <body>
     <header>
-        <h1>Conversor de moeda 1.0</h1>
+        <h1>Conversor de moeda 2.0</h1>
     </header>
     <main>
-        <?php
+    <?php
 
-            $data = date('m-d-Y'); // Ajuste no formato da data
-            $url = "https://olinda.bcb.gov.br/olinda/service/PTAX/version/v1/odata/DollarRateDate(dataCotacao=@dataCotacao)?@dataCotacao=''&$top=100&$format=json";
+        // Obtendo a data atual no formato correto para a API (MM-DD-YYYY)
+        $data = date('m-d-Y');
 
-            // Usando cURL para maior compatibilidade
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            $json = curl_exec($ch);
-            curl_close($ch);
+        // Montando a URL corretamente
+        $url = "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarDia(dataCotacao=@dataCotacao)?@dataCotacao='$data'&\$format=json&\$select=cotacaoVenda";
 
-            if ($json === false) {
-                die("Erro ao acessar a API do Banco Central.");
-            }
+        // Inicializando cURL
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $json = curl_exec($ch);
+        curl_close($ch);
 
-            $data = json_decode($json, true);
+        if ($json === false) {
+            die("Erro ao acessar a API do Banco Central.");
+        }
 
-            if ($data === null || empty($data['value'][0]['cotacaoCompra'])) {
-                die("Erro ao decodificar os dados ou cotação não encontrada.");
-            }
+        // Decodificando JSON
+        $data = json_decode($json, true);
 
-            $cotacao_dolar = $data['value'][0]['cotacaoCompra'];
-            $valor = 100;
-            $valor_convertido = $valor * $cotacao_dolar;
+        if ($data === null || empty($data['value'][0]['cotacaoVenda'])) {
+            die("Erro ao obter a cotação do dólar.");
+        }
 
-            echo "O valor de {$valor} dólares em reais é R$ " . number_format($valor_convertido, 2, ',', '.');
+        // Obtendo a cotação do dólar
+        $cotacao_dolar = $data['value'][0]['cotacaoVenda'];
 
+        // Valor em reais informado pelo usuário
+        $valor = $_GET["vlr"]; 
+        
 
-        ?>
+        // Convertendo para dólares
+        $valor_convertido = $valor / $cotacao_dolar;
+
+        // Exibindo o resultado
+        echo "<p>O valor de R$ " . number_format($valor, 2, ',', '.') . " equivale a: <strong>" . number_format($valor_convertido, 2, ',', '.') . " dólares.</strong></p>";
+
+        echo "<p>O valor da cotação do Dólar é: " . number_format($cotacao_dolar, 4, ',', '.') . " fonte: <strong>Banco Central do Brasil</strong></p>"
+
+    ?>
+
         <p class="voltar"><a href="javascript:history.go(-1)">← VOLTAR</a></p>
     </main>
 
