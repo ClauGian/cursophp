@@ -16,7 +16,7 @@
             $num = $_GET["numero"];
             $antec = $num - 1;
             $suces = $num + 1;
-            print "O número escolhido foi: <strong>$num</strong>.";
+            print "<p>O número escolhido foi: <strong>$num</strong>.</p>";
             print "<p>O seu número antecessor é <strong>$antec</strong>.";
             print "<p>O seu número sucessor é <strong>$suces</strong>.";    
         ?>
