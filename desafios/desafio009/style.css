@@ -21,18 +21,38 @@ body {
     justify-content: center;
     align-items: center;
 }
+h1.titulos {
+    text-align: center;
+    font-size: 2em;
+}
+
+p {
+    text-align: justify;
+    line-height: 1.5em;
+    font-size: 1.2em;
+}
 
 header, main, section, article {
     max-width: 700px;
 }
 
-header > h1 {
-    color: rgb(199, 240, 199);
-    text-shadow: 2px 2px 0px black;
+main{
+    background-color: rgb(110, 172, 110);
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.502);
+}
+article {
+    background-color: rgb(150, 223, 150);
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.502);
 }
 
-main, section, article {
-    background-color: rgb(150, 223, 150);
+section {
+    background-color: rgb(110, 172, 110);
     padding: 15px;
     margin-bottom: 20px;
     border-radius: 10px;
@@ -49,16 +69,6 @@ footer {
     padding: 5px;
 }
 
-p {
-    text-align: justify;
-    line-height: 1.5em;
-}
-
-p.voltar {
-    text-align: center; 
-    margin-top: 40px;    
-}
-
 h2, h3, h4 {
     color: #372991;
     margin: 0 0 10px 0;
@@ -71,8 +81,7 @@ a {
     font-weight: 600;
     text-decoration: none;
     border-radius: 6px;
-    margin-top: 20px;
-    
+    margin-top: 20px;    
 }
 
 a:hover {
@@ -139,9 +148,10 @@ ul > li::marker {
 /* ELEMENTOS DE FORMULÁRIO */
 
 form {
-    background-color: rgba(55, 41, 145, 0.2);
+    background-color: rgb(150, 223, 150);
     padding: 15px;
     border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.502);
 }
 
 form label {
@@ -179,6 +189,7 @@ input[type=submit] {
     cursor: pointer;
     display: block;
     margin: auto;
+    
 }
   
 input[type=submit]:hover {
@@ -213,6 +224,8 @@ input[type=button], button {
     cursor: pointer;
     display: block;
     margin: auto;
+    font-size: 1.2em;
+    font-weight: 700;
 }
 
 input[type=button]:hover, button:hover {
@@ -235,47 +248,4 @@ input[type=radio] + label, input[type=checkbox] + label {
     display: inline-block;
     font-size: 1em;
     background-color: rgba(0, 0, 0, 0);
-}
-
-
-
-.container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-left: 30px;
-    font-weight: 500;
-    font-size: 1.5em;
-}
-
-.dividendo {
-    width: 80px;
-    text-align: center;    
-    padding: 10px;
-}
-
-.divisor {
-    width: 80px;
-    text-align: center;
-    border-bottom: 1px solid black;
-    border-left: 1px solid black;
-    padding: 10px;
-}
-
-.resto {
-    width: 80px;
-    text-align: center;  
-    padding: 10px;
-    margin-top: 0px;
-    text-decoration: underline;
-    color: red;
-}
-
-.resultado-valor {    
-    width: 80px;
-    text-align: center;
-    padding: 10px;
-    border-left: 1px solid black;
-    margin-left: 0px;
-    color: blue;
 }
