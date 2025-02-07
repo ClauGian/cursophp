@@ -14,7 +14,7 @@
     <section>
         <form action="num.php" method="get">
             <label for="numero">Número Real</label>
-            <input type="number" name="numero" id="idnumero" step="any" required>
+            <input type="number" name="numero" id="idnumero" step="0.001">
             <button type="submit">Analisar</button>
         </form>
     </section>

@@ -13,9 +13,9 @@
 
     <section>
         
-        <form action="valor.php" method="get">
+        <form action="cotação.php" method="get">
             <label for="valor">Quantos Reais 'R$' você quer converter?</label>
-            <input type="number" name="vlr" id="idvalor" step="0.01" min="0">
+            <input type="number" name="vlreais" id="idvlreais" step="0.01" min="0">
             <button type="submit" name="converter">Converter</button>
         </form>
 

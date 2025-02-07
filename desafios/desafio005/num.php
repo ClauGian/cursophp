@@ -14,21 +14,21 @@
         <?php
 
             // Analisar o número
-            $num = $_GET["numero"];
+            $num = $_GET["numero"] ?? 0;
 
             // Separando a parte inteira e a parte fracionária
-            $parteInteira = floor($num);
+            $parteInteira = (int)$num;
             $parteFracionaria = $num - $parteInteira;
 
             // Garantir que a parte fracionária seja um número de ponto flutuante
             $parteFracionaria = (float) $parteFracionaria;
 
             // Exibindo os valores formatados
-            echo "<p>Analisando o número " . number_format($num, 3, ',', '.') . " informado pelo usuário.</p>";
+            echo "<p>Analisando o número <strong>" . number_format($num, 3, ',', '.') . "</strong> informado pelo usuário.</p>";
 
             echo "<ul>";
-            echo "<li><p>A parte inteira do número é: " . number_format($parteInteira, 0, ',', '.') . "</p></li>";
-            echo "<li><p>A parte fracionária do número é: " . number_format($parteFracionaria, 3, ',', '.') . "</p></li>";
+            echo "<li><p>A parte inteira do número é:<strong> " . number_format($parteInteira, 0, ',', '.') . "</strong></p></li>";
+            echo "<li><p>A parte fracionária do número é:<strong> " . number_format($parteFracionaria, 3, ',', '.') . "</strong></p></li>";
             echo "</ul>";            
 
         ?>

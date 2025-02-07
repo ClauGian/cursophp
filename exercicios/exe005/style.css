@@ -28,11 +28,11 @@ header, main, section, article {
 
 header > h1 {
     color: rgb(199, 240, 199);
-    text-shadow: 2px 2px 0px black;
+    text-shadow: 3px 3px 0px black;
 }
 
 main, section, article {
-    background-color: rgb(150, 223, 150);
+    background-color: white;
     padding: 15px;
     margin-bottom: 20px;
     border-radius: 10px;
@@ -54,42 +54,29 @@ p {
     line-height: 1.5em;
 }
 
-p.voltar {
-    text-align: center; 
-    margin-top: 40px;    
-}
-
 h2, h3, h4 {
     color: #372991;
     margin: 0 0 10px 0;
 }
 
-button.voltar {
-    align-items: center;
-    text-align: center;
-    width: 170px;
-}
-
 a {
-    color: rgb(46, 46, 105);
-    background-color: rgb(150, 223, 150);    
-    padding: 5px 5px 5px 5px;   
+    color: #15142b;
+    background-color: rgba(55, 41, 145, 0.1);
+    padding: 0 3px;
     font-weight: 600;
     text-decoration: none;
-    border-radius: 6px;
-    margin-top: 20px;
-    
+    border-bottom: .5px dotted #372991;
 }
 
 a:hover {
-    color: white;
-    background-color: rgb(47, 102, 47);
+    color: #372991;
+    border-bottom: 1px solid #372991;
 }
 
 /* TABELAS E LISTAS */
 
 table {
-    min-width: 500px;
+    min-width: 400px;
     border-spacing: 0px;
     border: 0.5px solid #372991;
     margin: 10px auto;
@@ -181,7 +168,7 @@ input[type=submit] {
     padding: 10px 20px;
     margin: 5px 0;
     border: none;
-    border-radius: 6px;
+    border-radius: 4px;
     cursor: pointer;
 }
   
@@ -206,20 +193,19 @@ input[type=reset]:hover {
 }
 
 input[type=button], button {
-    width: 170px;   
-    background-color: #52c058;
+    width: 100%;
+    background-color: #372991;
     font-size: 1em;
-    color: rgb(5, 5, 5);
+    color: white;
     padding: 10px 20px;
     margin: 5px 0;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    display: block;
-    margin: auto;
+}
 
 input[type=button]:hover, button:hover {
-    background-color: rgb(59, 134, 59);
+    background-color: #291f6c;
 }
 
 fieldset {

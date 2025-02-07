@@ -15,7 +15,7 @@
         
         <form action="valor.php" method="get">
             <label for="valor">Quantos Reais 'R$' você quer converter?</label>
-            <input type="number" name="vlr" id="idvalor">
+            <input type="number" name="vlreais" id="idvalor" step="0.01">
             <button type="submit" name="converter">Converter</button>
         </form>
 

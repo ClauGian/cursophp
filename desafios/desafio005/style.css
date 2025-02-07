@@ -65,7 +65,7 @@ h2, h3, h4 {
 }
 
 a {
-    color: #030303;
+    color: rgb(60, 60, 139);
     background-color: rgb(91, 197, 91);    
     padding: 5px 30px 5px 30px;   
     font-weight: 600;
@@ -168,15 +168,17 @@ input[type=text], [type=number], select, input[type=date], input[type=date], inp
 }
   
 input[type=submit] {
-    width: 100%;
+    width: 170px;
     background-color: #4CAF50;
     font-size: 1em;
-    color: white;
+    color: rgb(7, 7, 7);
     padding: 10px 20px;
     margin: 5px 0;
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    display: block;
+    margin: auto;
 }
   
 input[type=submit]:hover {
@@ -200,7 +202,7 @@ input[type=reset]:hover {
 }
 
 input[type=button], button {
-    width: 100%;
+    width: 170px;
     background-color: rgb(91, 197, 91);
     font-size: 1em;
     color: #030303;
@@ -209,6 +211,8 @@ input[type=button], button {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    display: block;
+    margin: auto;
 }
 
 input[type=button]:hover, button:hover {

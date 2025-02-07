@@ -13,11 +13,19 @@
     <main>
         <?php 
                      
-            $valor = $_GET["vlr"];
-            $convert = $valor / 5.79;
+            $reais = $_GET["vlreais"] ?? 0;
+            $dolar = $reais / 5.79;
 
-            print "<p>Seus <strong>R$ " . number_format($valor, 2, ',', '.') . "</strong> convertidos equivalem a <strong>US$ " . number_format($convert, 2) . "</strong><br></p>";
-            print "<p>A cotação de hoje é <strong>R$ 5,79</strong></p>"
+            //print "<p>Seus <strong>R$ " . number_format($reais, 2, ',', '.') . "</strong> convertidos equivalem a <strong>US$ " . number_format($dolar, 2) . "</strong><br></p>";
+
+            // Formatação de moedas com internacionalização
+
+            $padrao = numfmt_create("pt-BR", NumberFormatter::CURRENCY);
+
+            print "<p>Seus <strong> " . numfmt_format_currency($padrao, $reais, "BRL") . "</strong> convertidos equivalem a <strong> " . numfmt_format_currency($padrao, $dolar, "USD") . "</strong><br></p>";
+
+
+            print "<p>Com a cotação à <strong>R$ 5,79</strong></p>"
         ?>
         <p class="voltar"><a href="javascript:history.go(-1)">← VOLTAR</a></p>
     </main>
