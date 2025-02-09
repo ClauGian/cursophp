@@ -8,8 +8,8 @@
 </head>
 <body>
     <?php 
-        $dividendo = $_GET["divid"] ?? 0;
-        $divisor = $_GET["divis"] ?? 0;
+        $dividendo = $_GET["divid"] ?? 1;
+        $divisor = $_GET["divis"] ?? 1;
     ?>
 
     <main>
@@ -17,9 +17,9 @@
         
         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="get">
             <label for="dividendo">Dividendo:</label>
-            <input type="number" name="divid" id="dividendo" step="0.1"><br><br>
+            <input type="number" name="divid" id="dividendo" step="1"><br><br>
             <label for="divisor">Divisor:</label>
-            <input type="number" name="divis" id="divisor" step="0.1"><br><br>
+            <input type="number" name="divis" id="divisor" step="1"><br><br>
             <button type="submit">Calcular</button>
         </form>
         
@@ -30,6 +30,7 @@
         
         <?php
             $resultado = $dividendo / $divisor;
+            $resultadoInt = intval($resultado);
             $resto = $dividendo % $divisor;
             echo "<div class='container'>";
             echo "<div class='dividendo'>$dividendo</div>";
@@ -37,7 +38,7 @@
             echo "</div>";
             echo "<div class='container'>";
             echo "<div class='resto'>$resto</div>";
-            echo "<div class='resultado-valor'>" .number_format($resultado, 0, ',', '.') . "</div>";
+            echo "<div class='resultado-valor'>" .number_format($resultadoInt, 0, ',', '.') . "</div>";
             echo "</div>"; 
         ?>
         
