@@ -110,6 +110,7 @@ table tr:nth-child(odd) {
 
 table.divisao {
     border: 1px solid white;
+    padding: 30px 0px 30px 0px;
 }
 
 table.divisao td {

@@ -14,7 +14,7 @@ body {
     background-position: center center;
     background-size: cover;
     background-attachment: fixed;
-
+    margin: 0px;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -167,10 +167,10 @@ form label {
 }
 
 input[type=text], [type=number], select, input[type=date], input[type=date], input[type=datetime], input[type=email], input[type=month], input[type=password], input[type=range], input[type=tel], input[type=time], input[type=week] {
-    width: 100%;
+    width: 170%;
     padding: 12px 20px;
     font-size: 1em;
-    margin: 8px 0;
+    margin: 0px;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -183,12 +183,12 @@ input[type=submit] {
     font-size: 1em;
     color: rgb(7, 7, 7);
     padding: 10px 20px;
-    margin: 5px 0;
+    margin: 0px;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     display: block;
-    margin: auto;
+   
     
 }
   
@@ -223,7 +223,7 @@ input[type=button], button {
     border-radius: 4px;
     cursor: pointer;
     display: block;
-    margin: auto;
+    
     font-size: 1.2em;
     font-weight: 700;
 }

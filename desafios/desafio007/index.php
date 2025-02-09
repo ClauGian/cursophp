@@ -17,7 +17,7 @@
         
         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="get">
             <label for="salario">Salario:</label>
-            <input type="number" name="sal" id="sal" step="0.01"><br> 
+            <input type="number" name="sal" id="sal" value="<?=$salario?>" step="0.01"><br> 
             <p>Valor do salário mínimo em 2025: <strong>R$ 1.518,00</strong></p>           
             <button type="submit">Analisar</button>
         </form>
@@ -29,7 +29,7 @@
         
         <?php
             
-            $resultado = $salario / $salmin;
+            $resultado = intdiv ($salario, $salmin);
             $resto = $salario % $salmin;
 
             $padrao = numfmt_create("pt-BR", NumberFormatter::CURRENCY);

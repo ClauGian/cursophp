@@ -7,15 +7,17 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <?php 
+        $numero = $_GET["num"] ?? 1;
+    ?>
 
     <main>
         <h1 class="titulos">Informe um Número</h1>
         
         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="get">
             <label for="numero">Número:</label>
-            <input type="number" name="num" id="num" step="0.001"><br>                       
-            <button type="submit">Calcular</button>
+            <input type="number" name="num" id="num" value="<?=$numero?>" step="0.001"><br>                       
+            <button type="submit">Calcular Raízes</button>
         </form>
         
     </main>    
@@ -25,10 +27,19 @@
         
         <article>
             <?php
-                $numero = $_GET["num"] ?? 0;
-                $raizq = sqrt($numero);
-                $raizcub = pow($numero, 1/3);
-                $padrao = numfmt_create("pt-BR", NumberFormatter::CURRENCY);
+                
+                // primeira forma de resolver
+
+                //$raizq = sqrt($numero);
+                //$raizcub = pow($numero, 1/3);
+
+                // segunda forma de resolver
+
+                $raizq = $numero ** (1/2);
+                $raizcub = $numero ** (1/3);
+
+                echo "<p>Analisando o numero <strong>$numero</strong> temos:</p>";
+
                 echo "<ul><li><p>A Raiz Quadrada de <strong>$numero</strong> é igual a: <strong>" . number_format($raizq, 3, ',', '.') . "</strong>.</p></li>";
                 echo "<li><p>A Raiz Cúbica de <strong>$numero</strong> é igual a: <strong>" . number_format($raizcub, 3, ',', '.') ."</strong>.</p></li></ul>";
             ?>

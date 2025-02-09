@@ -3,80 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desafio 13 Caixa Eletrônico</title>
+    <title>Caixa Eletrônico</title>
     <link rel="stylesheet" href="style.css">
-    
 </head>
 <body> 
-
     <main>
         <h1 class="titulos">Caixa Eletrônico</h1>
 
         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="get">
             <label>Qual valor deseja sacar? (R$)</label>
-            <input type="number" name="saque" min="0" step="5" required>
-            <label>Notas disponíveis: R$ 100, - R$ 50, - R$ 10, - R$ 5</label><br>
+            <input type="number" name="saque" min="2" step="1" required>
+            <label>Notas disponíveis: R$ 100, R$ 50, R$ 20, R$ 10, R$ 5, R$ 2</label><br>
             <button type="submit">Sacar</button>
         </form>
     </main>
 
     <section>       
-
         <article>
             <?php
-                $vlr_saque = $_GET["saque"];
-                if (isset($_GET["saque"])) {
+                if (isset($_GET["saque"]) && is_numeric($_GET["saque"])) {
                     $saque = (int)$_GET["saque"];
+                    $vlr_saque = $saque;
 
-                    //Cálculo das notas
+                    // Definição das notas disponíveis
+                    $notas = [
+                        100 => "nota100.png",
+                        50  => "nota50.png",
+                        20  => "nota20.png",
+                        10  => "nota10.png",
+                        5   => "nota5.png",
+                        2   => "nota2.png",
+                    ];
 
-                    $cem = floor($saque / (100));
-                    $saque %= (100);
-                    $cinquenta = floor($saque / (50));
-                    $saque %= (50);
-                    $dez = floor($saque / (10));
-                    $saque %= (10);
-                    $cinco = floor($saque / 5);
-                    $saque %= 5;
-
-                    // Exibir os resultados
-
-                    $padrao = numfmt_create("pt-BR", NumberFormatter::CURRENCY);
-
-
-                    echo "<h1 style='font-size: 28px;'>Saque de " . numfmt_format_currency($padrao, $vlr_saque, "BRL") . " realizado!</h1>";
-
-                    /*
-                    echo "<p><ul><li><img src='imagens/nota100.png' alt='Nota de 100 reais' width='100'> → X $cem</li></p>";
-
-                    echo "<p><li><img src='imagens/nota50.png' alt='Nota de 50 reais' width='100'> → X $cinquenta</li></p>";
-
-                    echo "<p><li><img src='imagens/nota10.png' alt='Nota de 10 reais' width='100'> → X $dez</li></p>";
-
-                    echo "<p><li><img src='imagens/nota5.png' alt='Nota de 5 reais' width='100'> → X $cinco</li></ul></p>";
-                    */
-
-                    if ($cem > 0) {
-                        echo "<p><ul><li><img src='imagens/nota100.png' alt='Nota de 100 reais' width='100'> → X $cem</li></ul></p>";
+                    // Verifica se é possível sacar com as notas disponíveis
+                    if ($saque < 2 || $saque === 3) {
+                        echo "<h2 style='color: red;'>Erro: Não é possível sacar R$ $saque com as notas disponíveis.</h2>";
+                        exit;
                     }
-                    
-                    if ($cinquenta > 0) {
-                        echo "<p><ul><li><img src='imagens/nota50.png' alt='Nota de 50 reais' width='100'> → X $cinquenta</li></ul></p>";
+
+                    echo "<h1 style='font-size: 28px;'>Saque de R$ " . number_format($vlr_saque, 2, ',', '.') . " realizado!</h1>";
+
+                    echo "<ul>";
+                    foreach ($notas as $valor => $imagem) {
+                        $quantidade = floor($saque / $valor);
+                        $saque %= $valor;
+                        if ($quantidade > 0) {
+                            echo "<li><img src='imagens/$imagem' alt='Nota de $valor reais' width='100'> → X $quantidade</li>";
+                        }
                     }
-                    
-                    if ($dez > 0) {
-                        echo "<p><ul><li><img src='imagens/nota10.png' alt='Nota de 10 reais' width='100'> → X $dez</li></ul></p>";
-                    }
-                    
-                    if ($cinco > 0) {
-                        echo "<p><ul><li><img src='imagens/nota5.png' alt='Nota de 5 reais' width='100'> → X $cinco</li></ul></p>";
-                    }
-                        
-                }                    
-               
+                    echo "</ul>";
+                }
             ?>
         </article>
     </section>
-
 </body>
 </html>
+
