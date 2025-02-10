@@ -12,7 +12,7 @@
 
         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="get">
             <label>Qual valor deseja sacar? (R$)</label>
-            <input type="number" name="saque" min="2" step="1" required>
+            <input type="number" name="saque" min="2" step="1" value="<?=$saque?>" required>
             <label>Notas disponíveis: R$ 100, R$ 50, R$ 20, R$ 10, R$ 5, R$ 2</label><br>
             <button type="submit">Sacar</button>
         </form>
@@ -58,4 +58,5 @@
     </section>
 </body>
 </html>
+
 

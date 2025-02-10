@@ -25,8 +25,9 @@
 
         <article>
             <?php
-                $seg = $_GET["segundos"];    
+                 
                 if (isset($_GET["segundos"])) {
+                    $seg = $_GET["segundos"];
                     $segundos = (int)$_GET["segundos"];
                     // Cálculo das unidades de tempo
                     $semanas = floor($segundos / (7 * 24 * 60 * 60));

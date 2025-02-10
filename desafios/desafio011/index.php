@@ -8,18 +8,19 @@
     
 </head>
 <body> 
+    <?php
+        $percentual = 0; // Exemplo de variável
+        $valor_base = isset($_GET["valor_base"]) ? (float)$_GET['valor_base'] : 0;
+        $percentual = isset($_GET["percentual"]) ? (int)$_GET['percentual'] : 0;
+    ?>
     
     <main>
-        <h1 class="titulos">Reajustador de Preços</h1>
-
-        <?php
-            $percentual = 50; // Exemplo de variável
-        ?>
+        <h1 class="titulos">Reajustador de Preços</h1>       
         
         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="get">
 
             <label for="valor_base">Preço do Produto (R$)</label>
-            <input type="number" name="valor_base" step="0.01" required>
+            <input type="number" name="valor_base" min="0.10" step="0.01" value="<?=$valor_base?>" required>
             
             <label for="percentual">Qual será o percentual de reajuste? (Atualmente:<strong> <span id="percentualValor"><?= $percentual ?> %</strong></span>)</label>
             <input class="range" type="range" name="percentual" min="0" max="100" step="1" value="<?= $percentual ?>" oninput="atualizarPorcentagem(this.value)">
@@ -35,8 +36,7 @@
         
         <article>
             <?php
-                $valor_base = isset($_GET["valor_base"]) ? (float)$_GET['valor_base'] : 0;
-                $percentual = isset($_GET["percentual"]) ? (int)$_GET['percentual'] : 0;
+                
                 $vlr_reajustado = $valor_base + (($valor_base * $percentual) / 100);
 
                 $padrao = numfmt_create("pt-BR", NumberFormatter::CURRENCY);
