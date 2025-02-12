@@ -9,8 +9,9 @@
 <body>
 
     <?php 
-        $percentual = $_GET['perc'] ?? '0';
-        $valor = $_GET['vlr'] ?? "0";
+        $percentual = 0;
+        $percentual = $_GET["perc"] ?? '0';
+        $valor = $_GET["vlr"] ?? '0';
     
     ?>
 
@@ -20,21 +21,27 @@
 
         <form action="<?= $_SERVER['PHP_SELF'] ?>" method="get">
             <label for="vlr">Informe o Valor</label>
-            <input type="number" name="vlr" id="vlr" value="<?= $valor?>" step="0,01">
-            <label for="perc">Percentual de Reajuste (<?= $percentual?>%)</label>
-            <input type="range" name="perc" id="perc" value="<?= $percentual?>" min="0" max="100"  oninput="atualizarPorcentagem(this.value)">
+            <input type="number" name="vlr" id="vlr" value="<?= $valor?>" min="0.10" step="0.01">
+            <label for="perc">Percentual de Reajuste (Atualmente:<strong> <span id="percentualValor"><?= $percentual ?> %</strong></span>)</label>
+            <input class="range" type="range" name="perc" id="perc" value="<?= $percentual?>" min="0" max="100" step="1" oninput="atualizarPorcentagem(this.value)">
+            <button type="submit">Calcular</button>
         </form>
 
     </main>
 
     <section>
 
-        <h2></h2>
+        <h2>Resultado do Reajuste</h2>
 
         <article>
 
             <?php 
-            
+                $reajuste = ($valor * $percentual) / 100;
+                $total = ($valor + $reajuste);
+
+                $padrao = numfmt_create("pt-BR", NumberFormatter::CURRENCY);
+
+                echo "<p> → O valor de <strong>" . numfmt_format_currency($padrao, $valor, 'BRL') . "</strong> com reajuste de <strong>$percentual%</strong> sofreu um aumento de <strong>" . numfmt_format_currency($padrao, $reajuste, 'BRL') . "</strong>, passando a valer <strong>" . numfmt_format_currency($padrao, $total, 'BRL') . "</strong>.</p>";
             
             ?>
         </article>
