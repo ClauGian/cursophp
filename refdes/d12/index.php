@@ -7,10 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <?php 
-        
-    ?>
-
+   
     <main>
 
         <h1>Calculadora de Tempo</h1>
@@ -24,10 +21,11 @@
     </main>
 
     <section>
+
         <h2>Destrinchado o Tempo</h2>
 
         <article>
-            
+            <strong></strong>
             <?php 
                 if (isset($_GET["seg"])) {
                     $segundos = (int)$_GET["seg"] ?? ' ';
@@ -39,20 +37,28 @@
                     $segundos %= 86400;
                     $horas = floor($segundos / 3600);
                     $segundos %= 3600;
-                    $dias = floor($segundos / )
+                    $minutos = floor($segundos / 60);
+                    $segundos %= 60;
+
+                    echo "<ul>
+
+                        <p><strong>" . number_format($seg, 0, ',', '.') . "</strong> correspondem a: </p>
+                        <p><li><strong>$semanas → </strong>Semanas</li></p>
+                        <p><li><strong>$dias → </strong>Dias</li></p>
+                        <p><li><strong>$horas → </strong>Horas</li></p>
+                        <p><li><strong>$minutos → </strong>Minutos</li></p>
+                        <p><li><strong>$segundos → </strong>Segundos</li></p>
+                    
+                    </ul>";
 
                 }
-
-                
-
-
-
-                echo "Qtde $semana sobra $sobra segundos";
             
             ?>
-
-            <img src="tabela.png" alt="tabela de minutos">
+            
         </article>
+
+        <img src="tabela.png" alt="tabela de minutos">
+        
     </section>
 </body>
 </html>
